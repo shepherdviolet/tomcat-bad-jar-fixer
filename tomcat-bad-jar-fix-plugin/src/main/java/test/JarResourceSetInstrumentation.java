@@ -31,7 +31,9 @@ import org.apache.skywalking.apm.agent.core.plugin.match.NameMatch;
 import static net.bytebuddy.matcher.ElementMatchers.named;
 
 /**
- * Caused by: java.util.zip.ZipException: invalid LOC header (bad signature)
+ * 侵入org.apache.catalina.webresources.JarResourceSet#initInternal埋点
+ *
+ * @author S.Violet
  */
 public class JarResourceSetInstrumentation extends ClassInstanceMethodsEnhancePluginDefine {
 
@@ -42,7 +44,7 @@ public class JarResourceSetInstrumentation extends ClassInstanceMethodsEnhancePl
 
     @Override
     protected ClassMatch enhanceClass() {
-        logger.info("FIX: TestInstrumentation#enhanceClass");
+        logger.info("TestInstrumentation#enhanceClass");
         return NameMatch.byName(ENHANCE_CLASS);
     }
 
@@ -57,13 +59,13 @@ public class JarResourceSetInstrumentation extends ClassInstanceMethodsEnhancePl
             new InstanceMethodsInterceptPoint() {
                 @Override
                 public ElementMatcher<MethodDescription> getMethodsMatcher() {
-                    logger.info("FIX: TestInstrumentation#getMethodsMatcher");
+                    logger.info("TestInstrumentation#getMethodsMatcher");
                     return named("initInternal");
                 }
 
                 @Override
                 public String getMethodsInterceptor() {
-                    logger.info("FIX: TestInstrumentation#getMethodsInterceptor");
+                    logger.info("TestInstrumentation#getMethodsInterceptor");
                     return INTERCEPT_CLASS;
                 }
 
