@@ -18,7 +18,7 @@ dependencies {
     compileOnly "org.apache.skywalking:apm-util:$version_skywalking"
 
     //class printer
-    implementation "com.github.shepherdviolet:thistle-common:14.4"
+    implementation "com.github.shepherdviolet.glacimon:glacijava-common:2022.0.0"
 
     //skywalking测试依赖
     testImplementation "org.apache.skywalking:apm-test-tools:$version_skywalking"
